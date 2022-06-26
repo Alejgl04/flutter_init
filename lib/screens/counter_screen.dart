@@ -16,12 +16,13 @@ class _CounterScreenState extends State<CounterScreen> {
     const fontSize30 = TextStyle( fontSize: 30 );
 
     return Scaffold(
+
       appBar: AppBar(
         title: const Text('Counter Navbar'),
         elevation: 10,
       ),
+
       body: Center(
-        
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
@@ -30,19 +31,39 @@ class _CounterScreenState extends State<CounterScreen> {
             Text('$counter', style: fontSize30),
           ],
         ),
-
       ),
+      
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: const CustomFloatingActions(),
+          
+    );
+  }
+}
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            counter++;
-          });
-        },
-        tooltip: 'Press for click',
-        child: const Icon(Icons.add),
-      ),
+class CustomFloatingActions extends StatelessWidget {
+  const CustomFloatingActions({
+    Key? key,
+  }) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: const [
+        /**increment value counter */
+        FloatingActionButton(
+          onPressed: null ,
+          child: Icon(Icons.exposure_plus_1_outlined),
+        ),
+        FloatingActionButton(
+          onPressed: null ,
+          child: Icon(Icons.restore),
+        ),
+        FloatingActionButton(
+          onPressed: null ,
+          child: Icon(Icons.exposure_minus_1_outlined),
+        ),
+      ],
     );
   }
 }
