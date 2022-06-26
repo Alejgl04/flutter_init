@@ -1,18 +1,23 @@
 
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-  
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<CounterScreen> createState() => _CounterScreenState();
+}
+
+class _CounterScreenState extends State<CounterScreen> {
+  int counter = 10;
   @override
   Widget build(BuildContext context) {
     
     const fontSize30 = TextStyle( fontSize: 30 );
-    int counter = 10;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sample Navbar'),
+        title: const Text('Counter Navbar'),
         elevation: 10,
       ),
       body: Center(
@@ -30,8 +35,9 @@ class HomeScreen extends StatelessWidget {
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          counter++;
-          // print('Haciendo click: $counter');
+          setState(() {
+            counter++;
+          });
         },
         tooltip: 'Press for click',
         child: const Icon(Icons.add),
